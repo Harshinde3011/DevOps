@@ -1,0 +1,53 @@
+// shows git version 
+git -v
+
+//initialise the git repository 
+git init
+
+//shows files information
+git status
+
+//shows the changes u have made
+git diff "commit id1" "commit id2"
+
+// add your all file to staging area 
+git add .
+
+// restore file from staging area
+git restore --cached "file name"
+
+//commit your file or to keep track your file it will save your file in local git repo
+git commit -m "msg"
+
+//without adding into staging area directly commit
+git commit -a -m "msg"
+
+// shows the detailed description about commit
+git show "commit id"
+
+// shows how many branches 
+git branch
+
+//to switch and create the branch
+git checkout -b "branch name"
+
+//to switch branch
+git checkout "branch name"
+
+//merge branch to master branch 
+git merge "branch name"
+
+//shows latest commit of branches
+git branch -v
+
+//to delete the branch
+git branch -D "branch name" 
+
+// shows already merged branch
+git branch --merged 
+
+//add remote repository 
+git add remote origin "branch name"
+
+//push your file to remote repo
+git push 
