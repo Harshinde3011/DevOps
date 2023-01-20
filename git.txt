@@ -51,3 +51,6 @@ git add remote origin "branch name"
 
 //push your file to remote repo
 git push -u origin master 
+
+//push branch to remote repo
+git push origin "branch name"
