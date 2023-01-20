@@ -50,4 +50,4 @@ git branch --merged
 git add remote origin "branch name"
 
 //push your file to remote repo
-git push 
+git push -u origin master 
