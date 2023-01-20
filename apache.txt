@@ -1,0 +1,72 @@
+// change the user to root
+sudo su
+
+// update your os before install anything
+apt-get update
+
+//install java 
+apt-get install openjdk-11-jdk -y
+
+//change name of user machine (user name)
+hostname tomcat 
+
+//switch to tomcat
+su
+
+//go to tomcat official site and copy the address of tomcat version 
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.71/bin/apache-tomcat-9.0.71.tar.gz
+
+//unzip the all files
+tar -xvzf apache-tomcat-9.0.71.tar.gz
+
+//rename file for your convenience
+mv apache-tomcat-9.0.71 tomcat
+
+//go to tomcat dir
+cd tomcat
+
+//go to bin dir
+cd bin
+
+//for start the service of tomcat
+./startup.sh   
+
+// [for manager app] 
+
+//find context.xml dir
+find / -name context.xml
+
+//open following file
+vi /opt/tomcat/webapps/manager/META-INF/context.xml
+
+//it is loopback address which allow only local system so allow it from outside system 
+we have to comment out this:
+<!-- 
+     allow 127. ......
+     -->
+
+//then open following file and comment out the loopback ip
+vi /opt/tomcat/webapps/host-manager/META-INF/context.xml
+
+<!-- 
+     allow 127. ......
+     -->
+
+//restart the service after any changes 
+./shutdown.sh
+
+//starting tomcat service again 
+./startup.sh
+
+//to set username and passward 
+
+cd opt/tomcat/conf/tomcat-user.xml
+
+above </tomcat-user>
+<role rolename="manager-gui"/>
+ <role rolename="manager-script"/>
+ <role rolename="manager-jmx"/>
+ <role rolename="manager-status"/>
+ <user username="admin" password="admin" roles="manager-gui, manager-script, manager-jmx, manager-status"/>
+ <user username="deployer" password="deployer" roles="manager-script"/>
+ <user username="tomcat" password="s3cret" roles="manager-gui"/>
