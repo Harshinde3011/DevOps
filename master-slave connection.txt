@@ -1,0 +1,89 @@
+master-slave connection
+
+1 configration of jenkins-master
+
+#apt-get update 
+update all packages 
+
+#hostname master
+change hostname for your clearificatuon
+
+#apt install openjdk-11-jdk -y 
+install java on master node
+
+#java --version
+to check java is installed or not, or for java version
+
+#wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add
+Jenkins is not included in the Ubuntu 20.04 base repository, therefore, we need to add the Jenkins repository key with the command
+
+# sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+placed the repository in sources.list.d
+
+#apt-get update
+
+#apt install jenkins -y
+install jenkins 
+
+#systemctl status jenkins
+check jenkins status
+
+#systemctl start jenkins
+to start the jenkins service 
+
+now using public ip of masters ec2 connect to jenkins web page
+
+cat var/lib/secrets/initialAdminPassword
+
+copy the password and enter into jenkins web page
+
+2 slave configration
+
+#apt-get update
+update all packages 
+
+#hostname slave
+change hostname for your clearificatuon
+
+#apt install openjdk-11-jdk -y 
+install java on slave node
+
+#java --version
+to check java is installed or not, or for java version 
+
+3 master-slave connections step 
+
+step 1:
+create key on master node
+#cd .ssh
+change directory 
+
+step 2:
+on master
+#ssh-keygen
+to generate key 
+
+step 3:
+on master
+cat id_rsa.pub
+copy the public key
+
+step 4:
+on slave
+paste the public key of master on slaves authorized_keys
+
+step 5:
+on slave
+#systemctl reload sshd 
+
+step 6:
+on master 
+#ssh root@<private of slave-node>
+
+step 7:
+choose yes 
+
+
+
+ 
+ 
