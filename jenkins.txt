@@ -1,0 +1,36 @@
+jenkins installation
+
+#apt-get update 
+update all packages 
+
+#hostname jenkins
+change hostname for your clearification
+
+#apt install openjdk-11-jdk -y 
+install java on node
+
+#java --version
+to check java is installed or not, or for java version
+
+#wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add
+Jenkins is not included in the Ubuntu 20.04 base repository, therefore, we need to add the Jenkins repository key with the command
+
+# sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+placed the repository in sources.list.d
+
+#apt-get update
+
+#apt install jenkins -y
+install jenkins 
+
+#systemctl status jenkins
+check jenkins status
+
+#systemctl start jenkins
+to start the jenkins service 
+
+now using public ip of masters ec2 connect to jenkins web page
+
+cat var/lib/secrets/initialAdminPassword
+
+copy the password and enter into jenkins web page
