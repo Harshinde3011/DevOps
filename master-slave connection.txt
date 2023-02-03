@@ -91,7 +91,17 @@ on master
 visudo 
 set jenkins ALL(ALL:ALL) ALL
 
+step 9:
+using public of master connect to jenkins web
 
+step 10:
+for password 
+cat /var/lib/jenkins/secrets/initialAdministration
+
+step 11:
+new node 
+host = private ip of slave
+private key = private key of master 
 
  
  
